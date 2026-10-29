@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pregunta 4 - Control de misión espacial</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="cielo">
+  <div class="planeta" aria-hidden="true"><div class="orbita"><span class="luna"></span></div></div>
+  <main class="mision-layout">
+    <header class="vidrio cabecera">
+      <p class="estado"><i></i> En órbita</p>
+      <h1 class="titulo">Misión Aurora-7</h1>
+      <p class="sub">Centro de control · Estación orbital Kuntur</p>
+      <ul class="datos">
+        <li><strong>384 400</strong><span>km a la Luna</span></li>
+        <li><strong>12</strong><span>días</span></li>
+        <li><strong>4</strong><span>tripulantes</span></li>
+      </ul>
+      <button class="boton" type="button">Iniciar secuencia</button>
+    </header>
+
+    <section class="vidrio panel">
+      <h2>Telemetría</h2>
+      <div class="barra"><span>Combustible</span><i style="--v:72%"></i></div>
+      <div class="barra"><span>Oxígeno</span><i style="--v:91%"></i></div>
+      <div class="barra"><span>Energía solar</span><i style="--v:64%"></i></div>
+      <div class="barra"><span>Señal</span><i style="--v:85%"></i></div>
+    </section>
+
+    <section class="vidrio panel">
+      <h2>Tripulación</h2>
+      <ul class="tripulacion">
+        <li><b>LM</b>Lucía M.<small>Comandante</small></li>
+        <li><b>DR</b>Diego R.<small>Piloto</small></li>
+        <li><b>AC</b>Ana C.<small>Ingeniera</small></li>
+        <li><b>JT</b>Jorge T.<small>Biólogo</small></li>
+      </ul>
+      <p class="nota" id="nota-has">Resalte con :has() — disponible solo si el navegador lo soporta.</p>
+    </section>
+  </main>
+</div>
+</body>
+</html>

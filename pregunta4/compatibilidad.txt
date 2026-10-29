@@ -1,0 +1,48 @@
+COMPATIBILIDAD - Pregunta 4 (panel de control de misión espacial con efecto vidrio)
+===================================================================================
+Fuentes consultadas:
+ - MDN: https://developer.mozilla.org/es/docs/Web/CSS/backdrop-filter
+ - MDN: https://developer.mozilla.org/es/docs/Web/CSS/@supports
+ - MDN: https://developer.mozilla.org/es/docs/Web/CSS/background-clip
+ - MDN: https://developer.mozilla.org/es/docs/Web/CSS/:has
+ - MDN: https://developer.mozilla.org/es/docs/Web/CSS/@media/prefers-reduced-motion
+ - Can I use: https://caniuse.com/css-backdrop-filter
+ - Can I use: https://caniuse.com/css-has
+
+Técnicas usadas (requisitos):
+ 1. @supports con alternativa: base casi opaca (rgba .9) + mejora translúcida con backdrop-filter.
+ 2. Fallbacks / prefijos (estándar siempre al final):
+    - background: color sólido -> -webkit-radial-gradient -> radial-gradient
+    - width: 320px -> clamp(...)
+    - min-height: 100vh -> 100dvh
+    - -webkit-transition -> transition
+    - -webkit-backdrop-filter -> backdrop-filter
+    - título: color sólido -> degradado con -webkit-background-clip:text / background-clip:text
+ 3. @media (prefers-reduced-motion: reduce) desactiva animaciones y transiciones.
+ 4. Otras mejoras progresivas con @supports:
+    - (display:grid) and (gap:1px): layout flex + márgenes -> grid con gap
+    - (aspect-ratio:1/1): height fijo -> aspect-ratio
+    - selector(:has(*)): el panel se ilumina al pasar sobre un tripulante
+    - not (backdrop-filter): borde más marcado cuando no hay desenfoque
+
+Resultados de pruebas
+---------------------------------------------------------------------------
+| Característica        | Navegador A: Chromium 141 | Navegador B: ______ |
+|-----------------------|---------------------------|---------------------|
+| Fondo degradado/cielo | Igual                     | (completar)         |
+| Efecto vidrio (blur)  | Se ve el desenfoque       | (completar)         |
+| Título con degradado  | Se ve degradado           | (completar)         |
+| Layout grid + gap     | Igual                     | (completar)         |
+| aspect-ratio (tripul.)| Igual (tarjetas cuadradas)| (completar)         |
+| :has() resalte        | (probar al pasar cursor)  | (completar)         |
+| Animaciones          | Estrellas, órbita, barras | (completar)         |
+| reduced-motion        | (probar en DevTools)      | (completar)         |
+---------------------------------------------------------------------------
+Qué cambia: en un navegador sin backdrop-filter las tarjetas son oscuras y
+opacas en lugar de vidrio translúcido; sin background-clip:text el título
+queda en color amarillo sólido; el contenido sigue legible en todos los casos.
+
+NOTA: la columna "Navegador A" se probó en Chromium 141 (visualización y
+toques en móvil). Abre pregunta4/index.html en un segundo navegador
+(p. ej. Firefox o Safari), completa la columna B y anota la versión. Las
+filas marcadas "(probar...)" las debes comprobar tú en DevTools.

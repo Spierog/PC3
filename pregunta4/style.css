@@ -1,0 +1,139 @@
+/*
+=====================================================================
+ TABLA DE COMPATIBILIDAD (resumen; detalle en compatibilidad.txt)
+ Fuentes: MDN (developer.mozilla.org) y caniuse.com
+---------------------------------------------------------------------
+ Propiedad / técnica          | Navegador con soporte | Sin soporte (fallback)
+ backdrop-filter              | Chrome, Edge, Safari  | Panel casi opaco, legible
+ background-clip:text         | Todos los modernos    | Título de color sólido
+ -webkit- / estándar          | Orden prefijo -> std  | Mismo resultado visual
+ clamp()                      | Todos los modernos    | Ancho fijo anterior
+ 100dvh                       | Navegadores 2022+     | 100vh
+ display:grid + gap           | Todos los modernos    | flex + márgenes
+ aspect-ratio                 | Todos los modernos    | height fijo
+ :has() (@supports selector)  | Chrome, Safari, FF121+| Sin resalte extra
+ prefers-reduced-motion       | Todos los modernos    | Animaciones normales
+=====================================================================
+*/
+
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,sans-serif;color:#e0e7ff}
+
+/* Cielo nocturno: el color sólido es el fallback del degradado */
+.cielo{
+  position:relative;overflow:hidden;padding:24px;
+  min-height:100vh;                                      /* fallback */
+  min-height:100dvh;                                     /* estándar nuevo al final */
+  background:#0b1026;                                    /* fallback 1 */
+  background:-webkit-radial-gradient(70% 10%,#4c1d95 0,#0b1026 60%); /* prefijo antes... */
+  background:radial-gradient(circle at 70% 10%,#4c1d95 0,#0b1026 60%); /* ...del estándar */
+}
+/* Estrellas con gradientes repetidos */
+.cielo::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(1.5px 1.5px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 90px 80px,#cbd5ff,transparent),radial-gradient(1.5px 1.5px at 150px 20px,#fff,transparent);
+  background-size:180px 120px;animation:brillo 4s ease-in-out infinite}
+@keyframes brillo{50%{opacity:.35}}
+
+/* Planeta con anillo y luna en órbita */
+.planeta{position:absolute;right:-60px;top:70px;width:200px;height:200px;border-radius:50%;
+  background:#f97316;
+  background:-webkit-radial-gradient(35% 30%,#fdba74,#ea580c 55%,#7c2d12);
+  background:radial-gradient(circle at 35% 30%,#fdba74,#ea580c 55%,#7c2d12);
+  box-shadow:0 0 70px rgba(249,115,22,.45)}
+.planeta::after{content:"";position:absolute;left:-40px;right:-40px;top:42%;height:16%;border:3px solid rgba(253,230,138,.55);border-radius:50%;transform:rotate(-12deg)}
+.orbita{position:absolute;inset:-50px;animation:girar 14s linear infinite}
+.luna{position:absolute;top:0;left:50%;width:22px;height:22px;border-radius:50%;background:#e2e8f0;box-shadow:inset -5px -4px 0 rgba(0,0,0,.25)}
+@keyframes girar{to{transform:rotate(360deg)}}
+
+/* ---------- BASE FUNCIONAL (navegadores sin soporte) ---------- */
+.mision-layout{position:relative;display:flex;flex-wrap:wrap;justify-content:center;max-width:1100px;margin:0 auto}
+.mision-layout>*{margin:10px}
+.vidrio{
+  width:320px;                                           /* fallback de clamp */
+  width:clamp(260px,90vw,340px);
+  padding:26px 22px;
+  background:rgba(15,12,50,.9);                          /* casi opaco: legible sin blur */
+  border:1px solid rgba(165,180,252,.35);
+  border-radius:22px;
+  box-shadow:0 20px 40px rgba(0,0,0,.45);
+  -webkit-transition:transform .3s ease,border-color .3s ease;
+  transition:transform .3s ease,border-color .3s ease;   /* estándar al final */
+  animation:despegue .9s ease backwards;
+}
+.vidrio:hover{transform:translateY(-6px);border-color:#fbbf24}
+.panel:nth-of-type(1){animation-delay:.15s}.panel:nth-of-type(2){animation-delay:.3s}
+
+.cabecera{text-align:center}
+.estado{display:inline-flex;align-items:center;margin:0 0 10px;padding:4px 12px;border-radius:99px;background:rgba(34,197,94,.15);color:#86efac;font-size:.8rem}
+.estado i{width:8px;height:8px;margin-right:8px;border-radius:50%;background:#22c55e;animation:latido 1.6s ease-in-out infinite}
+.titulo{margin:0;font-size:1.7rem;color:#fbbf24}               /* fallback: color sólido */
+.sub{margin:6px 0 20px;font-size:.85rem;opacity:.75}
+.datos{list-style:none;margin:0 0 22px;padding:0;display:flex;justify-content:space-around}
+.datos strong{display:block;font-size:1.15rem;color:#fff}
+.datos span{font-size:.72rem;opacity:.75}
+.boton{font:inherit;font-weight:700;cursor:pointer;padding:11px 26px;border:0;border-radius:999px;background:#fbbf24;color:#1e1b4b;transition:transform .2s,box-shadow .2s}
+.boton:hover,.boton:focus-visible{transform:scale(1.07);box-shadow:0 0 22px rgba(251,191,36,.6)}
+.boton:active{transform:scale(.96)}
+
+.panel h2{margin:0 0 16px;font-size:1.05rem;color:#c4b5fd}
+.barra{margin-bottom:14px;font-size:.85rem}
+.barra span{display:block;margin-bottom:4px}
+.barra i{display:block;height:10px;border-radius:99px;background:rgba(255,255,255,.14);position:relative;overflow:hidden}
+.barra i::after{content:"";position:absolute;top:0;left:0;bottom:0;width:var(--v);border-radius:99px;background:#22d3ee;transform-origin:left;animation:llenar 1.3s ease .4s backwards}
+.tripulacion{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap}
+.tripulacion li{flex:1 1 40%;margin:5px;padding:12px 6px;text-align:center;border-radius:14px;background:rgba(255,255,255,.08);font-size:.85rem;height:104px;transition:transform .25s,background .25s}
+.tripulacion li:hover{transform:rotate(-3deg) scale(1.06);background:rgba(255,255,255,.18)}
+.tripulacion b{display:flex;align-items:center;justify-content:center;width:38px;height:38px;margin:0 auto 6px;border-radius:50%;background:#a78bfa;color:#1e1b4b}
+.tripulacion small{display:block;opacity:.7}
+.nota{margin:14px 0 0;font-size:.72rem;opacity:.65}
+
+@keyframes despegue{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes latido{50%{opacity:.3;transform:scale(1.6)}}
+@keyframes llenar{from{transform:scaleX(0)}}
+
+/* ---------- MEJORAS: cada una solo si el navegador la soporta ---------- */
+/* 1) Efecto vidrio */
+@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+  .vidrio{
+    background:rgba(165,180,252,.1);                     /* ahora sí translúcido */
+    -webkit-backdrop-filter:blur(16px) saturate(170%);   /* prefijo primero */
+    backdrop-filter:blur(16px) saturate(170%);           /* estándar al final */
+  }
+}
+/* 2) Título con degradado de texto */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .titulo{
+    background:-webkit-linear-gradient(90deg,#fde68a,#f472b6,#a78bfa);
+    background:linear-gradient(90deg,#fde68a,#f472b6,#a78bfa);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+}
+/* 3) Grid con gap en lugar de flex + márgenes */
+@supports (display:grid) and (gap:1px){
+  .mision-layout{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,340px));gap:20px;justify-content:center;align-items:start}
+  .mision-layout>*{margin:0}
+  .vidrio{width:auto}
+  .tripulacion{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .tripulacion li{margin:0}
+}
+/* 4) aspect-ratio reemplaza la altura fija */
+@supports (aspect-ratio:1/1){
+  .tripulacion li{height:auto;aspect-ratio:1/1;display:grid;align-content:center}
+}
+/* 5) :has() — el panel se ilumina si contiene un elemento con hover */
+@supports selector(:has(*)){
+  .panel:has(li:hover){border-color:#22d3ee;box-shadow:0 0 30px rgba(34,211,238,.3)}
+  #nota-has::after{content:" ✔ :has() activo";color:#86efac}
+}
+/* 6) Sin backdrop-filter: borde más marcado para compensar */
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+  .vidrio{border-color:rgba(165,180,252,.6)}
+}
+
+/* ---------- Accesibilidad: reducir movimiento ---------- */
+@media (prefers-reduced-motion:reduce){
+  .vidrio,.cielo::before,.orbita,.estado i,.barra i::after{animation:none}
+  .vidrio,.boton,.tripulacion li{transition:none}
+  .vidrio:hover,.boton:hover,.tripulacion li:hover{transform:none}
+}

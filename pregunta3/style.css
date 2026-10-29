@@ -1,0 +1,44 @@
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#000}
+.escena{position:relative;width:min(900px,100vw);aspect-ratio:16/9;overflow:hidden;background:#000}
+.escena>*,.auto>*{position:absolute}
+
+/* Ciclo día/noche (20 s) */
+.cielo{inset:0;background:linear-gradient(#38bdf8,#bae6fd);animation:cielo 20s linear infinite}
+@keyframes cielo{0%,40%{filter:none}50%,90%{filter:brightness(.22) hue-rotate(20deg)}100%{filter:none}}
+
+.sol{width:12%;aspect-ratio:1;border-radius:50%;background:#fde047;box-shadow:0 0 40px 10px #fde04799;left:10%;top:100%;
+  animation:sol 20s ease-in-out infinite}
+@keyframes sol{0%{top:90%;opacity:1}20%{top:10%}45%{top:90%;opacity:1}46%,100%{top:90%;opacity:0}}
+.luna{width:9%;aspect-ratio:1;border-radius:50%;background:#f1f5f9;box-shadow:inset -10px -4px 0 #cbd5e1;right:15%;top:100%;
+  animation:luna 20s ease-in-out infinite}
+@keyframes luna{0%,50%{top:90%;opacity:0}51%{opacity:1}70%{top:10%}95%{top:90%;opacity:1}100%{top:90%;opacity:0}}
+
+.nube{height:7%;width:16%;background:#fff;border-radius:50px;opacity:.9;animation:nube linear infinite}
+.nube::before,.nube::after{content:"";position:absolute;background:#fff;border-radius:50%}
+.nube::before{width:45%;aspect-ratio:1;top:-60%;left:15%}
+.nube::after{width:35%;aspect-ratio:1;top:-40%;left:50%}
+.nube1{top:12%;animation-duration:30s}
+.nube2{top:25%;width:12%;animation-duration:45s;animation-delay:-15s}
+.nube3{top:8%;width:10%;animation-duration:38s;animation-delay:-28s}
+@keyframes nube{from{left:-20%}to{left:110%}}
+
+.montana{bottom:30%;width:0;height:0;border-left:20vmin solid transparent;border-right:20vmin solid transparent;border-bottom:22vmin solid #475569}
+.m1{left:8%}
+.m2{left:50%;border-bottom-color:#334155;border-bottom-width:30vmin;border-left-width:26vmin;border-right-width:26vmin}
+.suelo{left:0;right:0;bottom:0;height:32%;background:#16a34a}
+.carretera{left:0;right:0;bottom:5%;height:14%;background:
+  repeating-linear-gradient(90deg,#fff 0 6%,transparent 6% 12%) center/200% 6% no-repeat,#334155;
+  animation:linea 1s linear infinite}
+@keyframes linea{to{background-position:-24% center,0 0}}
+
+.auto{bottom:11%;width:14%;aspect-ratio:2.2;animation:auto 9s linear infinite}
+@keyframes auto{from{left:-18%}to{left:105%}}
+.carroceria{left:0;right:0;bottom:22%;height:42%;background:#ef4444;border-radius:8px 14px 6px 6px}
+.techo{left:22%;width:50%;bottom:60%;height:36%;background:#dc2626;border-radius:12px 18px 0 0}
+.rueda{width:22%;aspect-ratio:1;bottom:0;background:#111;border-radius:50%;border:4px solid #9ca3af;animation:giro .5s linear infinite}
+.rueda::after{content:"";position:absolute;inset:40% 10%;height:2px;background:#9ca3af}
+.r1{left:12%}.r2{right:12%}
+@keyframes giro{to{transform:rotate(360deg)}}
+
+@media (prefers-reduced-motion:reduce){.escena *{animation-play-state:paused!important}}

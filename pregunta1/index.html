@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pregunta 1 - Interfaz con transiciones</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="../index.html">◀ Examen CSS</a>
+  <nav class="menu" aria-label="Menú principal">
+    <a href="#inicio" class="menu__link menu__link--activo">Inicio</a>
+    <div class="menu__item">
+      <input type="checkbox" id="sm" class="menu__check"><label for="sm" class="menu__link">Servicios ▾</label>
+      <ul class="submenu">
+        <li><a href="#servicios">Diseño web</a></li>
+        <li><a href="#servicios">Aplicaciones</a></li>
+        <li><a href="#servicios">Consultoría</a></li>
+      </ul>
+    </div>
+    <a href="#portafolio" class="menu__link">Portafolio</a>
+    <a href="#contacto" class="menu__link">Contacto</a>
+  </nav>
+</header>
+
+<main class="panel">
+  <h1>Panel de control</h1>
+
+  <section class="bloque" id="inicio">
+    <h2>Pestañas</h2>
+    <div class="tabs">
+      <input type="radio" name="t" id="t1" checked><input type="radio" name="t" id="t2"><input type="radio" name="t" id="t3">
+      <div class="tabs__bar" role="tablist">
+        <label for="t1">Resumen</label><label for="t2">Equipo</label><label for="t3">Precios</label>
+      </div>
+      <div class="tabs__panels">
+        <div>Resumen del proyecto: interfaz hecha solo con HTML y CSS, con transiciones de color, posición y tamaño.</div>
+        <div>Equipo: 3 diseñadores y 2 desarrolladores trabajando en componentes reutilizables.</div>
+        <div>Precios: plan básico S/ 49, plan pro S/ 99 y plan empresa a medida.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="servicios">
+    <h2>Botonera</h2>
+    <div class="botonera">
+      <button class="btn btn--primario">Guardar</button>
+      <button class="btn btn--relleno">Enviar</button>
+      <button class="btn btn--contorno">Cancelar</button>
+      <a class="btn btn--peligro" href="#confirmar">Eliminar</a>
+    </div>
+    <div class="controles">
+      <label class="switch"><input type="checkbox" checked><i></i>Notificaciones</label>
+      <label class="switch"><input type="checkbox"><i></i>Modo oscuro</label>
+      <label class="chip"><input type="checkbox" checked><span>HTML</span></label>
+      <label class="chip"><input type="checkbox"><span>CSS</span></label>
+      <label class="chip"><input type="checkbox"><span>Accesibilidad</span></label>
+    </div>
+  </section>
+
+  <section class="bloque" id="portafolio">
+    <h2>Productos</h2>
+    <div class="productos">
+      <article class="prod"><span class="prod__ico">🎧</span><h3>Audífonos</h3><p>S/ 129</p><button class="btn btn--contorno">Añadir</button></article>
+      <article class="prod"><span class="prod__ico">⌨️</span><h3>Teclado</h3><p>S/ 89</p><button class="btn btn--contorno">Añadir</button></article>
+      <article class="prod"><span class="prod__ico">🖱️</span><h3>Mouse</h3><p>S/ 59</p><button class="btn btn--contorno">Añadir</button></article>
+    </div>
+  </section>
+
+  <section class="bloque">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Funciona sin JavaScript?</summary><p>Sí, todo se resuelve con selectores como :hover, :checked, :target y :focus-within.</p></details>
+    <details><summary>¿Es accesible?</summary><p>Usa :focus-visible y respeta prefers-reduced-motion.</p></details>
+  </section>
+
+  <section class="bloque" id="contacto">
+    <h2>Contacto</h2>
+    <form class="contacto" onsubmit="return false">
+      <label class="campo"><input type="text" placeholder=" " required><span>Nombre</span></label>
+      <label class="campo"><input type="email" placeholder=" " required><span>Correo</span></label>
+      <label class="campo"><textarea rows="3" placeholder=" " required></textarea><span>Mensaje</span></label>
+      <button class="btn btn--relleno">Enviar mensaje</button>
+    </form>
+  </section>
+</main>
+
+<div class="modal" id="confirmar" role="dialog" aria-label="Confirmar eliminación">
+  <div class="modal__caja"><h3>¿Eliminar elemento?</h3><p>Esta acción no se puede deshacer.</p>
+    <a class="btn btn--peligro" href="#inicio">Sí, eliminar</a> <a class="btn btn--contorno" href="#inicio">Cancelar</a></div>
+</div>
+</body>
+</html>

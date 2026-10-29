@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bestiario Andino: criaturas míticas del Perú en tarjetas con transformaciones CSS.">
+<title>Bestiario Andino - Pregunta 2</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="marca" href="#inicio">🦙 Bestiario Andino</a>
+  <nav class="nav" aria-label="Principal">
+    <a href="#sobre">Sobre</a><a href="#galeria">Criaturas</a><a href="#leyenda">Leyenda</a><a href="#faq">Preguntas</a><a href="../index.html">◀ Examen</a>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="sol" aria-hidden="true"></div>
+  <span class="flot f1" aria-hidden="true">🦅</span><span class="flot f2" aria-hidden="true">🐍</span><span class="flot f3" aria-hidden="true">⚡</span>
+  <p class="kicker">Mitología del Perú</p>
+  <h1>Bestiario <em>Andino</em></h1>
+  <p class="lead">Ocho criaturas que habitan el cielo, la montaña, el agua y la selva. Toca cada tarjeta para descubrir su leyenda.</p>
+  <a class="cta" href="#galeria">Explorar criaturas</a>
+  <ul class="cifras"><li><strong>8</strong><span>criaturas</span></li><li><strong>4</strong><span>hábitats</span></li><li><strong>3</strong><span>regiones</span></li></ul>
+</section>
+
+<section class="seccion" id="sobre">
+  <h2>Sobre el bestiario</h2>
+  <p class="intro">Una colección ilustrada de seres de la tradición oral andina y amazónica, pensada para explorarse con el cursor, el dedo o el teclado.</p>
+  <div class="feats">
+    <article class="feat"><span>📜</span><h3>Tradición oral</h3><p>Relatos transmitidos por generaciones en quechua, aimara y lenguas amazónicas.</p></article>
+    <article class="feat"><span>🧭</span><h3>Cuatro hábitats</h3><p>Filtra las criaturas por cielo, montaña, agua o selva.</p></article>
+    <article class="feat"><span>🔮</span><h3>Tarjetas que giran</h3><p>Cada ficha se voltea en 3D y revela su leyenda en el reverso.</p></article>
+  </div>
+</section>
+
+<section class="seccion" id="galeria">
+  <h2>Criaturas</h2>
+  <p class="intro">Pasa el cursor, toca o enfoca con el teclado una tarjeta para voltearla.</p>
+  <input type="radio" name="f" id="f-todos" checked><input type="radio" name="f" id="f-cielo"><input type="radio" name="f" id="f-montana"><input type="radio" name="f" id="f-agua"><input type="radio" name="f" id="f-selva">
+  <nav class="filtros" aria-label="Filtrar por hábitat">
+    <label for="f-todos">Todas</label><label for="f-cielo">Cielo</label><label for="f-montana">Montaña</label><label for="f-agua">Agua</label><label for="f-selva">Selva</label>
+  </nav>
+  <div class="galeria">
+    <article class="tarjeta" data-h="agua" tabindex="0" style="--i:0" aria-label="Amaru, toca para leer su leyenda">
+      <div class="tarjeta__inner">
+        <div class="cara frente" style="--c1:#0d9488;--c2:#134e4a"><span class="etiqueta">Agua</span><span class="emoji">🐉</span><h3>Amaru</h3><span class="peligro" title="Peligro 4 de 5">●●●●○</span></div>
+        <div class="cara dorso"><h4>Amaru</h4><p>Serpiente alada de dos cabezas que une cielo, tierra y agua. Dicen que sus movimientos abren los ríos.</p><span class="hab">Hábitat: Agua</span></div>
+      </div>
+    </article>
+    <article class="tarjeta" data-h="cielo" tabindex="0" style="--i:1" aria-label="Cóndor Mallku, toca para leer su leyenda">
+      <div class="tarjeta__inner">
+        <div class="cara frente" style="--c1:#f59e0b;--c2:#7c2d12"><span class="etiqueta">Cielo</span><span class="emoji">🦅</span><h3>Cóndor Mallku</h3><span class="peligro" title="Peligro 1 de 5">●○○○○</span></div>
+        <div class="cara dorso"><h4>Cóndor Mallku</h4><p>Mensajero de los Apus. Lleva las plegarias de los pueblos hasta el sol y vigila las cumbres.</p><span class="hab">Hábitat: Cielo</span></div>
+      </div>
+    </article>
+    <article class="tarjeta" data-h="montana" tabindex="0" style="--i:2" aria-label="Ukuku, toca para leer su leyenda">
+      <div class="tarjeta__inner">
+        <div class="cara frente" style="--c1:#64748b;--c2:#1e293b"><span class="etiqueta">Montaña</span><span class="emoji">🐻</span><h3>Ukuku</h3><span class="peligro" title="Peligro 3 de 5">●●●○○</span></div>
+        <div class="cara dorso"><h4>Ukuku</h4><p>Hombre-oso guardián de los glaciares. Protege a los peregrinos en la fiesta del Qoyllur Rit'i.</p><span class="hab">Hábitat: Montaña</span></div>
+      </div>
+    </article>
+    <article class="tarjeta" data-h="selva" tabindex="0" style="--i:3" aria-label="Yacumama, toca para leer su leyenda">
+      <div class="tarjeta__inner">
+        <div class="cara frente" style="--c1:#16a34a;--c2:#14532d"><span class="etiqueta">Selva</span><span class="emoji">🐍</span><h3>Yacumama</h3><span class="peligro" title="Peligro 5 de 5">●●●●●</span></div>
+        <div class="cara dorso"><h4>Yacumama</h4><p>Anaconda gigante, madre de las aguas. Cuentan que atrae las canoas hacia lo profundo del río.</p><span class="hab">Hábitat: Selva</span></div>
+      </div>
+    </article>
+    <article class="tarjeta" data-h="selva" tabindex="0" style="--i:4" aria-label="Tunche, toca para leer su leyenda">
+      <div class="tarjeta__inner">
+        <div class="cara frente" style="--c1:#7c3aed;--c2:#2e1065"><span class="etiqueta">Selva</span><span class="emoji">👻</span><h3>Tunche</h3><span class="peligro" title="Peligro 4 de 5">●●●●○</span></div>
+        <div class="cara dorso"><h4>Tunche</h4><p>Espíritu silbador de la selva. Su silbido en la noche anuncia desgracias a quien lo escucha.</p><span class="hab">Hábitat: Selva</span></div>
+      </div>
+    </article>
+    <article class="tarjeta" data-h="montana" tabindex="0" style="--i:5" aria-label="Runamula, toca para leer su leyenda">
+      <div class="tarjeta__inner">
+        <div class="cara frente" style="--c1:#dc2626;--c2:#7f1d1d"><span class="etiqueta">Montaña</span><span class="emoji">🐴</span><h3>Runamula</h3><span class="peligro" title="Peligro 4 de 5">●●●●○</span></div>
+        <div class="cara dorso"><h4>Runamula</h4><p>Mula nocturna de ojos de fuego que recorre los pueblos andinos cuando cae la oscuridad.</p><span class="hab">Hábitat: Montaña</span></div>
+      </div>
+    </article>
+    <article class="tarjeta" data-h="cielo" tabindex="0" style="--i:6" aria-label="Illapa, toca para leer su leyenda">
+      <div class="tarjeta__inner">
+        <div class="cara frente" style="--c1:#eab308;--c2:#422006"><span class="etiqueta">Cielo</span><span class="emoji">⚡</span><h3>Illapa</h3><span class="peligro" title="Peligro 3 de 5">●●●○○</span></div>
+        <div class="cara dorso"><h4>Illapa</h4><p>Dios del rayo y la lluvia. Lanza el agua desde su honda y hace tronar los cerros.</p><span class="hab">Hábitat: Cielo</span></div>
+      </div>
+    </article>
+    <article class="tarjeta" data-h="agua" tabindex="0" style="--i:7" aria-label="Mama Cocha, toca para leer su leyenda">
+      <div class="tarjeta__inner">
+        <div class="cara frente" style="--c1:#0ea5e9;--c2:#0c4a6e"><span class="etiqueta">Agua</span><span class="emoji">🌊</span><h3>Mama Cocha</h3><span class="peligro" title="Peligro 2 de 5">●●○○○</span></div>
+        <div class="cara dorso"><h4>Mama Cocha</h4><p>Madre del mar. Protege a los pescadores y reclama una ofrenda antes de cada travesía.</p><span class="hab">Hábitat: Agua</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="seccion" id="leyenda">
+  <h2>Leyenda destacada</h2>
+  <article class="destacada">
+    <div class="destacada__img" aria-hidden="true"><span>🐉</span></div>
+    <div class="destacada__txt">
+      <h3>El Amaru y los dos mundos</h3>
+      <p>Cuentan que el Amaru nació cuando el cielo y la tierra se separaron. Con una cabeza mira al mundo de arriba y con la otra al de abajo; su cuerpo es el río que une ambos.</p>
+      <p class="nota">Peligro: ●●●●○ · Hábitat: agua</p>
+    </div>
+  </article>
+</section>
+
+<section class="seccion" id="faq">
+  <h2>Preguntas frecuentes</h2>
+  <details><summary>¿Las historias son reales?</summary><p>Son relatos de la tradición oral; cambian según la comunidad y la región.</p></details>
+  <details><summary>¿Funciona en el celular?</summary><p>Sí: toca una tarjeta para voltearla y toca fuera para volver.</p></details>
+  <details><summary>¿Usa JavaScript?</summary><p>No. Los filtros, giros y animaciones se hacen solo con HTML y CSS.</p></details>
+</section>
+
+<footer class="pie">
+  <div><strong>🦙 Bestiario Andino</strong><p>Proyecto de CSS avanzado: transformaciones 3D, transiciones y animaciones.</p></div>
+  <div><strong>Secciones</strong><p><a href="#sobre">Sobre</a> · <a href="#galeria">Criaturas</a> · <a href="#leyenda">Leyenda</a> · <a href="#faq">Preguntas</a></p></div>
+  <p class="copy">© 2026 Bestiario Andino · Hecho con HTML y CSS</p>
+</footer>
+</body>
+</html>
